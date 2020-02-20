@@ -16,7 +16,7 @@ class App extends Component {
     this.putInRedux = this.putInRedux.bind(this)
   }
   componentDidMount() {
-    axios.get('/api/get_session').then(session => {
+    axios.get('/auth/get_session').then(session => {
       this.setState({
         sessionData: session.data
       })
@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   createSession() {
-    axios.post('/api/set_data_in_session', {
+    axios.post('/auth/set_data_in_session', {
       date: new Date(),
       destination: 'server',
       coding: 'is Fun?'
@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   destroySession() {
-    axios.post('/api/destroy_data_in_session').then(session => {
+    axios.post('/auth/destroy_data_in_session').then(session => {
       this.setState({
         sessionData: session.data
       })

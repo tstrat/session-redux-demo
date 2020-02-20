@@ -9,6 +9,7 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "http-proxy-middleware": "^0.19.1",
+    "morgan": "^1.9.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
@@ -16,7 +17,9 @@
     "redux": "^4.0.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start & nodemon",
+    "server": "node server/index.js",
+    "start-dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

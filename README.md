@@ -3,16 +3,15 @@
 ### Install example
 ```
 git clone https://github.com/tstrat-devmountain/session-redux-example
-npm i
-npm run build
+npm install
 ```
 
 ### Run the code
 ```
-node server/index.js
-```
-- Alternatively:
-```
-node server/index.js
 npm start
+```
+- Alternatively: to run each piece individually
+```
+npm run server
+npm start-dev
 ```

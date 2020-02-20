@@ -1,15 +1,12 @@
-require('dotenv').config()
-
 const express = require('express')
-const session = require('express-session');
+const morgan = require('morgan')
+const session = require('express-session')
 const app = express()
 
-const { SERVER_PORT, SESSION_SECRET } = process.env
-
 app.use(express.json()) // allows req.body with json
-
+app.use(morgan('tiny'))
 app.use(session({
-    secret: SESSION_SECRET,
+    secret: 'my super secret',
     saveUninitialized: false, // dont start with session created
     resave: false,
     cookie: {
@@ -18,16 +15,18 @@ app.use(session({
 
 }))
 
-app.get('/api/get_session', (req, res) => {
+
+app.get('/auth/get_session', (req, res) => {
     res.status(200).send(req.session.data)
 })
-app.post('/api/set_data_in_session', (req, res) => {
+app.post('/auth/set_data_in_session', (req, res) => {
     req.session.data = req.body
     res.status(200).send(req.session.data)
 })
-app.post('/api/destroy_data_in_session', (req, res) => {
+app.post('/auth/destroy_data_in_session', (req, res) => {
     req.session.destroy();
     res.status(200).send(req.session);
 })
 
-app.listen(SERVER_PORT || 4000, () => console.log(`Server started, port: ${SERVER_PORT}`))
+const SERVER_PORT = 4000
+app.listen(SERVER_PORT, () => console.log(`Server started, port: ${SERVER_PORT}`))

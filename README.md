@@ -2,7 +2,7 @@
 
 ### Install example
 ```
-git clone https://github.com/tstrat-devmountain/session-redux-example
+git clone https://github.com/tstrat/session-redux-example
 npm install
 ```
 
